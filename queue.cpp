@@ -1,5 +1,6 @@
 #include <iostream>
 #include "queue.h"
+#include "data.h"
 
 using namespace std;
 
@@ -63,7 +64,7 @@ bool TQueue::IsEmpty() {
 void TQueue::Print() {
 	TQueueNode *ths = this->first;
 	while (ths) {
-		cout << ths->value << " ";
+		//cout << ths->value << " ";
 		ths = ths->next;
 	}
 	cout << endl;

@@ -1,7 +1,9 @@
 #ifndef _QUEUE_H_
-#define _QUEUE_H_
+#define 
 
-typedef long long Item;
+#include "data.h"
+
+typedef TNote Item;
 
 class TQueueNode {
 public:
