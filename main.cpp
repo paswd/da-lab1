@@ -6,7 +6,7 @@
 
 /*int main()
 {
-	T_Vector *arr = new T_Vector;
+	TVector *arr = new TVector;
 	arr->resize(2);
 	arr->values[0] = 3;
 	arr->values[1] = 2;
@@ -37,7 +37,7 @@ int main() {
 	queue_sort(queue);
 	queue_print(queue);
 	queue_destroy(&queue);*/
-	T_Queue *queue = new T_Queue;
+	TQueue *queue = new TQueue;
 	printf("-------------------------------------------\n");
 	printf("Commands:\n");
 	printf("a <value> - push to queue\n");
@@ -72,7 +72,7 @@ int main() {
 				queue->Print();
 				break;
 			/*case 'c':
-				queue_print_correct(queue);
+				queue_prinTcorrect(queue);
 				break;
 			case 'f':
 				printf("%lld\n", queue_first(queue));

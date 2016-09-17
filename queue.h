@@ -3,20 +3,20 @@
 
 typedef long long Item;
 
-class T_QueueNode {
+class TQueueNode {
 public:
 	Item value;
-	T_QueueNode *next;
+	TQueueNode *next;
 };
 
-class T_Queue {
+class TQueue {
 private:
-	T_QueueNode *first;
-	T_QueueNode *last;
+	TQueueNode *first;
+	TQueueNode *last;
 	int error;
 public:
-	T_Queue();
-	~T_Queue();
+	TQueue();
+	~TQueue();
 
 	void Push(Item value);
 	Item Pop();

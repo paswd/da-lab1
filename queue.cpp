@@ -5,22 +5,22 @@ using namespace std;
 
 const Item queue_empty = -9000000000000000000;
 
-T_Queue::T_Queue() {
+TQueue::TQueue() {
 	this->first = NULL;
 	this->last = NULL;
 	this->error = 0;
 }
-T_Queue::~T_Queue() {
-	T_QueueNode *node_del = this->first;
+TQueue::~TQueue() {
+	TQueueNode *node_del = this->first;
 	while (node_del) {
-		T_QueueNode *tmp = node_del->next;
+		TQueueNode *tmp = node_del->next;
 		delete node_del;
 		node_del = tmp;
 	}
 }
 
-void T_Queue::Push(Item value) {
-	T_QueueNode *nw = new T_QueueNode;
+void TQueue::Push(Item value) {
+	TQueueNode *nw = new TQueueNode;
 	if (!nw) {
 		this->error = 1;
 		return;
@@ -35,24 +35,24 @@ void T_Queue::Push(Item value) {
 	this->last = nw;
 }
 
-Item T_Queue::Pop() {
+Item TQueue::Pop() {
 	if (this->first == NULL) {
 		cout << "Queue is empty" << endl;
 		this->last = NULL;
 		return queue_empty;
 	}
 	Item result = this->first->value;
-	T_QueueNode *node_del = this->first;
+	TQueueNode *node_del = this->first;
 	this->first = node_del->next;
 	delete node_del;
 	return result;
 }
 
-Item T_Queue::First() {
+Item TQueue::First() {
 	return this->first->value;
 }
 
-bool T_Queue::IsEmpty() {
+bool TQueue::IsEmpty() {
 	if (this->first == NULL) {
 		this->last = NULL;
 		return true;
@@ -60,8 +60,8 @@ bool T_Queue::IsEmpty() {
 	return false;
 }
 
-void T_Queue::Print() {
-	T_QueueNode *ths = this->first;
+void TQueue::Print() {
+	TQueueNode *ths = this->first;
 	while (ths) {
 		cout << ths->value << " ";
 		ths = ths->next;

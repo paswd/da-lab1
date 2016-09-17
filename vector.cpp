@@ -4,16 +4,16 @@
 
 using namespace std;
 
-T_Vector::T_Vector()
+TVector::TVector()
 {
 	this->values = NULL;
 	this->arr_size = 0;
 }
-T_Vector::~T_Vector()
+TVector::~TVector()
 {
 	free(this->values);
 }
-bool T_Vector::resize(size_t new_size)
+bool TVector::resize(size_t new_size)
 {
 	this->arr_size = new_size;
 	this->values = (int *) realloc(this->values, this->arr_size * sizeof(int));
@@ -22,11 +22,11 @@ bool T_Vector::resize(size_t new_size)
 	}
 	return true;
 }
-size_t T_Vector::size()
+size_t TVector::size()
 {
 	return this->arr_size;
 }
-void T_Vector::print()
+void TVector::print()
 {
 	for (size_t i = 0; i < this->arr_size; i++) {
 		cout << this->values[i] << ' ';
