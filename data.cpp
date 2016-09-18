@@ -51,50 +51,70 @@ bool TNote::Input(void) {
 		}
 		if (!mode) {
 			//Key parse block
-			if (sym == '\t') {
+			/*if (sym == '\t') {
 				mode = true;
 				pos = 0;
 				continue;
-			}
-			if (sym == '.' || pos >= 4) {
+			}*/
+			//printf("Pos: %d\n", (int) pos);
+			//printf("Sym: %c\n", sym);
+			//printf("El: %d\n", (int) element);
+			if (sym == '.' || pos >= 4 || sym == '\t') {
 				switch (element) {
 					case 0:
-						if (pos >= 4) {
+						if (pos >= 4 || sym == '\t') {
+							//printf("Braked: case 0\n");
 							return false;
 						}
+						//printf("%s\n", tmp);
 						for (size_t i = 0; i < pos; i++) {
-							this->key.day = (char) StrToInt(tmp, 4);
+							this->key.day = (char) StrToInt(tmp, pos);
 							this->day_nulls_cnt = this->PrenullsCnt(tmp);
 						}
+						printf("Debug 1: %d\n", this->key.day);
 						element++;
 						pos = 0;
-						break;
+						continue;
 					case 1:
-						if (pos >= 4) {
+						if (pos >= 4 || sym == '\t') {
+							//printf("Braked: case 1\n");
 							return false;
 						}
+						//printf("%s\n", tmp);
+						//printf("\n");
 						for (size_t i = 0; i < pos; i++) {
-							this->key.month = (char) StrToInt(tmp, 4);
+							this->key.month = (char) StrToInt(tmp, pos);
 							this->month_nulls_cnt = this->PrenullsCnt(tmp);
 						}
+						printf("Debug 2: %d\n", this->key.month);
 						element++;
 						pos = 0;
-						break;
+						continue;
 					case 2:
+						printf("\nEl: in\n");
+						printf("%s\n", tmp);
+						//printf("\n");
 						for (size_t i = 0; i < pos; i++) {
-							this->key.year = (char) StrToInt(tmp, 4);
+							this->key.year = (short int) StrToInt(tmp, pos);
 							this->year_nulls_cnt = this->PrenullsCnt(tmp);
 						}
 						element++;
+						printf("Debug 3: %d\n", this->key.year);
+
+						mode = true;
+						pos = 0;
+
+						continue;
 					default:
 						continue;
 				}
 			}
+			tmp[pos] = sym;
 		} else {
 			//Value parse block
 			this->value[pos] = sym;
-			pos++;
 		}
+		pos++;
 	}
 	if (pos > 63) {
 		pos = 63;
