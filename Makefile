@@ -3,8 +3,8 @@ COMPILLER=g++
 
 all: start
 
-start: vector.o queue.o main.o
-	$(COMPILLER) $(FLAGS) -o da-lab1 vector.o queue.o main.o
+start: vector.o queue.o data.o main.o
+	$(COMPILLER) $(FLAGS) -o da-lab1 vector.o queue.o data.o main.o
 
 main.o: main.cpp
 	$(COMPILLER) -c $(FLAGS) main.cpp
@@ -14,6 +14,9 @@ vector.o: vector.cpp
 
 queue.o: queue.cpp
 	$(COMPILLER) -c $(FLAGS) queue.cpp
+
+data.o: data.cpp
+	$(COMPILLER) -c $(FLAGS) data.cpp
 
 clear:
 	-rm -f *.o *.gch da-lab1

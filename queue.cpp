@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const Item queue_empty = -9000000000000000000;
+//const Item queue_empty = -9000000000000000000;
 
 TQueue::TQueue() {
 	this->first = NULL;
@@ -40,7 +40,9 @@ Item TQueue::Pop() {
 	if (this->first == NULL) {
 		cout << "Queue is empty" << endl;
 		this->last = NULL;
-		return queue_empty;
+		//return queue_empty;
+		TNote nt_empty;
+		return nt_empty;
 	}
 	Item result = this->first->value;
 	TQueueNode *node_del = this->first;

@@ -23,6 +23,7 @@ public:
 	TDate key;
 	char value[64];
 
+	TNote();
 	bool Input(void);
 	void Print(void);
 };
