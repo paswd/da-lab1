@@ -5,28 +5,27 @@
 #include "sorts.h"
 
 int main(void) {
-	/*TNote in_tmp;
+	TNote in_tmp;
 	TQueue *queue = new TQueue;
+	size_t i = 0;
 	while (in_tmp.Input()) {
 		queue->Push(in_tmp);
+		i++;
 	}
+	size_t size = i;
+	TNote *notes = new TNote[size];
+	i = 0;
 	while (!queue->IsEmpty()) {
-		queue->Pop().Print();
-		printf("\n");
-	}*/
-
-	TVector *arr = new TVector;
-	const size_t size = 10;
-	arr->Resize(size);
-	for (int i = 0; i < size; i++) {
-		scanf("%d", arr->values + i);
+		notes[i] = queue->Pop();
 	}
-	printf("Start arr:\n");
-	arr->Print();
-	TVector *n_arr = CntSortScheme(arr);
-	printf("Result arr:\n");
-	n_arr->Print();
-	delete arr;
-	delete n_arr;
+	TNote *res = RadixSort(notes, size);
+
+	for (i = 0; i < size; i++) {
+		notes[i].Print();
+	}
+	delete [] res;
+	delete [] notes;
+	delete queue;
+	
 	return 0;
 }

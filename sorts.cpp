@@ -3,9 +3,9 @@
 #include "queue.h"
 #include "data.h"
 
-TVector *CntSortScheme(TVector *arr) {
+TNote *CntSort(TVector *arr, TNote *notes) {
 	int cnts[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	TVector *res = new TVector;
+	TNote *res = new TNote[arr->Size()];
 	res->Resize(arr->Size());
 	for (size_t i = 0; i < arr->Size(); i++) {
 		arr->values[i] %= 10;
@@ -15,9 +15,12 @@ TVector *CntSortScheme(TVector *arr) {
 		cnts[i] += cnts[i - 1];
 	}
 	for (int i = arr->Size() - 1; i >= 0; i--) {
-		printf("I: %d\n", i);
 		cnts[arr->values[i]]--;
-		res->values[cnts[arr->values[i]]] = arr->values[i];
+		res->values[cnts[arr->values[i]]] = notes[i];
 	}
 	return res;
+}
+
+TNote *RadixSort(TNote *arr, size_t size) {
+	
 }
