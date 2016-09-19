@@ -12,6 +12,7 @@ public:
 	bool Resize(size_t new_size);
 	size_t Size();
 	void Print();
+	void Clear();
 };
 
 

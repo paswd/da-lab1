@@ -3,7 +3,7 @@
 
 #include "vector.h"
 
-TVector *CntSortScheme(TVector *arr);
-TNote *RadixSort(TNote *arr, size_t size);
+TNote *CntSort(TVector *arr, TNote *notes);
+void RadixSort(TNote **arr, size_t size);
 
 #endif

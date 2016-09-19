@@ -71,7 +71,7 @@ bool TNote::Input(void) {
 							this->key.day = (char) StrToInt(tmp, pos);
 							this->day_nulls_cnt = this->PrenullsCnt(tmp);
 						}
-						printf("Debug 1: %d\n", this->key.day);
+						//printf("Debug 1: %d\n", this->key.day);
 						element++;
 						pos = 0;
 						continue;
@@ -86,20 +86,20 @@ bool TNote::Input(void) {
 							this->key.month = (char) StrToInt(tmp, pos);
 							this->month_nulls_cnt = this->PrenullsCnt(tmp);
 						}
-						printf("Debug 2: %d\n", this->key.month);
+						//printf("Debug 2: %d\n", this->key.month);
 						element++;
 						pos = 0;
 						continue;
 					case 2:
-						printf("\nEl: in\n");
-						printf("%s\n", tmp);
+						//printf("\nEl: in\n");
+						//printf("%s\n", tmp);
 						//printf("\n");
 						for (size_t i = 0; i < pos; i++) {
 							this->key.year = (short int) StrToInt(tmp, pos);
 							this->year_nulls_cnt = this->PrenullsCnt(tmp);
 						}
 						element++;
-						printf("Debug 3: %d\n", this->key.year);
+						//printf("Debug 3: %d\n", this->key.year);
 
 						mode = true;
 						pos = 0;
@@ -145,4 +145,5 @@ void TNote::Print(void) {
 			break;
 		}
 	}
+	printf("\n");
 }

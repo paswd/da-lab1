@@ -22,6 +22,7 @@ private:
 public:
 	TDate key;
 	char value[64];
+	long long num_tmp;
 
 	TNote();
 	bool Input(void);

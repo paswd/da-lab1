@@ -17,13 +17,15 @@ int main(void) {
 	i = 0;
 	while (!queue->IsEmpty()) {
 		notes[i] = queue->Pop();
+		i++;
 	}
-	TNote *res = RadixSort(notes, size);
-
+	RadixSort(&notes, size);
+	//printf("Point\n");
 	for (i = 0; i < size; i++) {
 		notes[i].Print();
 	}
-	delete [] res;
+	//printf("Stop Point\n");
+	//delete [] res;
 	delete [] notes;
 	delete queue;
 	
