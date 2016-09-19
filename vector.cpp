@@ -2,34 +2,37 @@
 #include <stdlib.h>
 #include "vector.h"
 
+/* ATTENTION */
+/* THIS CODE WAS SENT ON DEBUGGING. CODE STYLE CAN BE CORRECTED IN FUTURE */
+
 using namespace std;
 
 TVector::TVector() {
-	this->values = NULL;
-	this->arr_size = 0;
+    this->Values = NULL;
+    this->ArrSize = 0;
 }
 TVector::~TVector() {
-	free(this->values);
+    free(this->Values);
 }
 bool TVector::Resize(size_t new_size) {
-	this->arr_size = new_size;
-	this->values = (int *) realloc(this->values, this->arr_size * sizeof(int));
-	if (this->values == NULL && this->arr_size != 0) {
-		return false;
-	}
-	return true;
+    this->ArrSize = new_size;
+    this->Values = (int *) realloc(this->Values, this->ArrSize * sizeof(int));
+    if (this->Values == NULL && this->ArrSize != 0) {
+        return false;
+    }
+    return true;
 }
 size_t TVector::Size() {
-	return this->arr_size;
+    return this->ArrSize;
 }
 void TVector::Print() {
-	for (size_t i = 0; i < this->arr_size; i++) {
-		cout << this->values[i] << ' ';
-	}
-	cout << endl;
+    for (size_t i = 0; i < this->ArrSize; i++) {
+        cout << this->Values[i] << ' ';
+    }
+    cout << endl;
 }
 void TVector::Clear() {
-	for (size_t i = 0; i < this->arr_size; i++) {
-		this->values[i] = 0;
-	}
+    for (size_t i = 0; i < this->ArrSize; i++) {
+        this->Values[i] = 0;
+    }
 }

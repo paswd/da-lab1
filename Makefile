@@ -22,4 +22,4 @@ sorts.o: sorts.cpp
 	$(COMPILLER) -c $(FLAGS) sorts.cpp
 
 clear:
-	-rm -f *.o *.gch da-lab1
+	-rm -f *.o *.gch da-lab1 out.txt

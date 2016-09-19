@@ -3,28 +3,31 @@
 
 #include "data.h"
 
+/* ATTENTION */
+/* THIS CODE WAS SENT ON DEBUGGING. CODE STYLE CAN BE CORRECTED IN FUTURE */
+
 typedef TNote Item;
 
 class TQueueNode {
 public:
-	Item value;
-	TQueueNode *next;
+    Item Value;
+    TQueueNode *Next;
 };
 
 class TQueue {
 private:
-	TQueueNode *first;
-	TQueueNode *last;
-	int error;
+    TQueueNode *FirstEl;
+    TQueueNode *LastEl;
+    int Error;
 public:
-	TQueue();
-	~TQueue();
+    TQueue();
+    ~TQueue();
 
-	void Push(Item value);
-	Item Pop();
-	Item First();
-	bool IsEmpty();
-	void Print();
+    void Push(Item value);
+    Item Pop();
+    Item First();
+    bool IsEmpty();
+    void Print();
 };
 
 #endif

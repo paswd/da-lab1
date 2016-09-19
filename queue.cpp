@@ -2,72 +2,75 @@
 #include "queue.h"
 #include "data.h"
 
+/* ATTENTION */
+/* THIS CODE WAS SENT ON DEBUGGING. CODE STYLE CAN BE CORRECTED IN FUTURE */
+
 using namespace std;
 
 //const Item queue_empty = -9000000000000000000;
 
 TQueue::TQueue() {
-	this->first = NULL;
-	this->last = NULL;
-	this->error = 0;
+    this->FirstEl = NULL;
+    this->LastEl = NULL;
+    this->Error = 0;
 }
 TQueue::~TQueue() {
-	TQueueNode *node_del = this->first;
-	while (node_del) {
-		TQueueNode *tmp = node_del->next;
-		delete node_del;
-		node_del = tmp;
-	}
+    TQueueNode *node_del = this->FirstEl;
+    while (node_del) {
+        TQueueNode *tmp = node_del->Next;
+        delete node_del;
+        node_del = tmp;
+    }
 }
 
 void TQueue::Push(Item value) {
-	TQueueNode *nw = new TQueueNode;
-	if (!nw) {
-		this->error = 1;
-		return;
-	}
-	nw->value = value;
-	nw->next = NULL;
-	if (this->last != NULL) {
-		this->last->next = nw;
-	} else {
-		this->first = nw;
-	}
-	this->last = nw;
+    TQueueNode *nw = new TQueueNode;
+    if (!nw) {
+        this->Error = 1;
+        return;
+    }
+    nw->Value = value;
+    nw->Next = NULL;
+    if (this->LastEl != NULL) {
+        this->LastEl->Next = nw;
+    } else {
+        this->FirstEl = nw;
+    }
+    this->LastEl = nw;
 }
 
 Item TQueue::Pop() {
-	if (this->first == NULL) {
-		cout << "Queue is empty" << endl;
-		this->last = NULL;
-		//return queue_empty;
-		TNote nt_empty;
-		return nt_empty;
-	}
-	Item result = this->first->value;
-	TQueueNode *node_del = this->first;
-	this->first = node_del->next;
-	delete node_del;
-	return result;
+    if (this->FirstEl == NULL) {
+        cout << "Queue is empty" << endl;
+        this->LastEl = NULL;
+        //return queue_empty;
+        TNote nt_empty;
+        return nt_empty;
+    }
+    Item result = this->FirstEl->Value;
+    TQueueNode *node_del = this->FirstEl;
+    this->FirstEl = node_del->Next;
+    delete node_del;
+    return result;
 }
 
 Item TQueue::First() {
-	return this->first->value;
+    return this->FirstEl->Value;
 }
 
 bool TQueue::IsEmpty() {
-	if (this->first == NULL) {
-		this->last = NULL;
-		return true;
-	}
-	return false;
+    if (this->FirstEl == NULL) {
+        this->LastEl = NULL;
+        return true;
+    }
+    return false;
 }
 
 void TQueue::Print() {
-	TQueueNode *ths = this->first;
-	while (ths) {
-		//cout << ths->value << " ";
-		ths = ths->next;
-	}
-	cout << endl;
+    TQueueNode *ths = this->FirstEl;
+    while (ths) {
+        //cout << ths->Value << " ";
+        ths = ths->Next;
+    }
+    cout << endl;
 }

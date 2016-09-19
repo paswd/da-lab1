@@ -1,32 +1,35 @@
 #ifndef _DATA_H_
 #define _DATA_H_
 
+/* ATTENTION */
+/* THIS CODE WAS SENT ON DEBUGGING. CODE STYLE CAN BE CORRECTED IN FUTURE */
+
 int CharToInt(int sym);
 int StrToInt(char *str, size_t size);
 
 class TDate {
 public:
-	char day;
-	char month;
-	short int year;
+    char Day;
+    char Month;
+    short int Year;
 };
 
 class TNote {
 private:
-	char day_nulls_cnt;
-	char month_nulls_cnt;
-	char year_nulls_cnt;
+    char DayNullsCnt;
+    char MonthNullsCnt;
+    char YearNullsCnt;
 
-	char PrenullsCnt(char *str);
-	void TmpClear(char *str);
+    char PrenullsCnt(char *str);
+    void TmpClear(char *str);
 public:
-	TDate key;
-	char value[64];
-	long long num_tmp;
+    TDate Key;
+    char Value[65];
+    long long NumTmp;
 
-	TNote();
-	bool Input(void);
-	void Print(void);
+    TNote();
+    bool Input(void);
+    void Print(void);
 };
 
 
