@@ -9,9 +9,9 @@ public:
 	
 	TVector();
 	~TVector();
-	bool resize(size_t new_size);
-	size_t size();
-	void print();
+	bool Resize(size_t new_size);
+	size_t Size();
+	void Print();
 };
 
 

@@ -13,7 +13,7 @@ TVector::~TVector()
 {
 	free(this->values);
 }
-bool TVector::resize(size_t new_size)
+bool TVector::Resize(size_t new_size)
 {
 	this->arr_size = new_size;
 	this->values = (int *) realloc(this->values, this->arr_size * sizeof(int));
@@ -22,11 +22,11 @@ bool TVector::resize(size_t new_size)
 	}
 	return true;
 }
-size_t TVector::size()
+size_t TVector::Size()
 {
 	return this->arr_size;
 }
-void TVector::print()
+void TVector::Print()
 {
 	for (size_t i = 0; i < this->arr_size; i++) {
 		cout << this->values[i] << ' ';
