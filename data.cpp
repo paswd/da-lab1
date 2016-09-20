@@ -47,6 +47,7 @@ bool TNote::Input(void) {
     size_t pos = 0;
     char element = 0;
     bool mode = false;
+    bool log[4] = {false, false, false, false};
 
     while ((sym = getchar()) != '\n') {
         if (sym == EOF) {
@@ -65,6 +66,7 @@ bool TNote::Input(void) {
             if (sym == '.' || pos >= 4 || sym == '\t') {
                 switch (element) {
                     case 0:
+                        log[0] = true;
                         if (pos >= 4 || sym == '\t') {
                             //printf("Braked: case 0\n");
                             return false;
@@ -79,6 +81,7 @@ bool TNote::Input(void) {
                         pos = 0;
                         continue;
                     case 1:
+                        log[1] = true;
                         if (pos >= 4 || sym == '\t') {
                             //printf("Braked: case 1\n");
                             return false;
@@ -94,6 +97,7 @@ bool TNote::Input(void) {
                         pos = 0;
                         continue;
                     case 2:
+                        log[2] = true;
                         //printf("\nEl: in\n");
                         //printf("%s\n", tmp);
                         //printf("\n");
@@ -114,6 +118,7 @@ bool TNote::Input(void) {
             }
             tmp[pos] = sym;
         } else {
+            log[3] = true;
             //Value parse block
             this->Value[pos] = sym;
         }
@@ -123,10 +128,14 @@ bool TNote::Input(void) {
         pos = 64;
     }
     this->Value[pos] = '\0';
+    this->IsEmpty = !(log[0] && log[1] && log[2] && log[3]);
     return true;
 }
 
 void TNote::Print(void) {
+    if (this->IsEmpty) {
+        return;
+    }
     for (char i = 0; i < this->DayNullsCnt; i++) {
         printf("0");
     }

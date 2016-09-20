@@ -19,6 +19,7 @@ private:
     char DayNullsCnt;
     char MonthNullsCnt;
     char YearNullsCnt;
+    bool IsEmpty;
 
     char PrenullsCnt(char *str);
     void TmpClear(char *str);
