@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include "vector.h"
 
-/* ATTENTION */
-/* THIS CODE WAS SENT ON DEBUGGING. CODE STYLE CAN BE CORRECTED IN FUTURE */
-
 using namespace std;
 
 TVector::TVector() {

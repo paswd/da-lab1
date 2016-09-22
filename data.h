@@ -1,9 +1,6 @@
 #ifndef _DATA_H_
 #define _DATA_H_
 
-/* ATTENTION */
-/* THIS CODE WAS SENT ON DEBUGGING. CODE STYLE CAN BE CORRECTED IN FUTURE */
-
 int CharToInt(int sym);
 int StrToInt(char *str, size_t size);
 

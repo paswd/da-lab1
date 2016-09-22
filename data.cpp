@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include "data.h"
 
-/* ATTENTION */
-/* THIS CODE WAS SENT ON DEBUGGING. CODE STYLE CAN BE CORRECTED IN FUTURE */
-
 int CharToInt(int sym) {
     if (sym >= '0' && sym <= '9') {
         return sym - '0';
@@ -32,6 +29,7 @@ TNote::TNote() {
 
 char TNote::PrenullsCnt(char *str) {
     char cnt = 0;
+
     for (size_t i = 0; i < 4; i++) {
         if (str[i] != '0') {
             break;
@@ -54,40 +52,29 @@ bool TNote::Input(void) {
             return false;
         }
         if (!mode) {
-            //Key parse block
-            /*if (sym == '\t') {
-                mode = true;
-                pos = 0;
-                continue;
-            }*/
-            //printf("Pos: %d\n", (int) pos);
-            //printf("Sym: %c\n", sym);
-            //printf("El: %d\n", (int) element);
             if (sym == '.' || pos >= 4 || sym == '\t') {
                 switch (element) {
                     case 0:
                         log[0] = true;
+
                         if (pos >= 4 || sym == '\t') {
-                            //printf("Braked: case 0\n");
                             return false;
                         }
-                        //printf("%s\n", tmp);
+
                         for (size_t i = 0; i < pos; i++) {
                             this->Key.Day = (char) StrToInt(tmp, pos);
                             this->DayNullsCnt = this->PrenullsCnt(tmp);
                         }
-                        //printf("Debug 1: %d\n", this->Key.Day);
                         element++;
                         pos = 0;
                         continue;
                     case 1:
                         log[1] = true;
+
                         if (pos >= 4 || sym == '\t') {
-                            //printf("Braked: case 1\n");
                             return false;
                         }
-                        //printf("%s\n", tmp);
-                        //printf("\n");
+
                         for (size_t i = 0; i < pos; i++) {
                             this->Key.Month = (char) StrToInt(tmp, pos);
                             this->MonthNullsCnt = this->PrenullsCnt(tmp);
@@ -98,15 +85,12 @@ bool TNote::Input(void) {
                         continue;
                     case 2:
                         log[2] = true;
-                        //printf("\nEl: in\n");
-                        //printf("%s\n", tmp);
-                        //printf("\n");
+
                         for (size_t i = 0; i < pos; i++) {
                             this->Key.Year = (short int) StrToInt(tmp, pos);
                             this->YearNullsCnt = this->PrenullsCnt(tmp);
                         }
                         element++;
-                        //printf("Debug 3: %d\n", this->Key.Year);
 
                         mode = true;
                         pos = 0;
@@ -119,7 +103,6 @@ bool TNote::Input(void) {
             tmp[pos] = sym;
         } else {
             log[3] = true;
-            //Value parse block
             this->Value[pos] = sym;
         }
         pos++;
@@ -136,6 +119,7 @@ void TNote::Print(void) {
     if (this->IsEmpty) {
         return;
     }
+    
     for (char i = 0; i < this->DayNullsCnt; i++) {
         printf("0");
     }

@@ -3,17 +3,14 @@ COMPILLER=g++
 
 all: start
 
-start: vector.o queue.o data.o sorts.o main.o
-	$(COMPILLER) $(FLAGS) -o da-lab1 vector.o queue.o data.o sorts.o main.o
+start: vector.o data.o sorts.o main.o
+	$(COMPILLER) $(FLAGS) -o da-lab1 vector.o data.o sorts.o main.o
 
 main.o: main.cpp
 	$(COMPILLER) -c $(FLAGS) main.cpp
 
 vector.o: vector.cpp
 	$(COMPILLER) -c $(FLAGS) vector.cpp
-
-queue.o: queue.cpp
-	$(COMPILLER) -c $(FLAGS) queue.cpp
 
 data.o: data.cpp
 	$(COMPILLER) -c $(FLAGS) data.cpp

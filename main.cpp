@@ -1,36 +1,34 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "vector.h"
-#include "queue.h"
+//#include "queue.h"
 #include "data.h"
 #include "sorts.h"
 
-/* ATTENTION */
-/* THIS CODE WAS SENT ON DEBUGGING. CODE STYLE CAN BE CORRECTED IN FUTURE */
-
 int main(void) {
     TNote in_tmp;
-    TQueue *queue = new TQueue;
-    size_t i = 0;
+    size_t size = 0;
+    TNote *notes = NULL;
+    size_t t_size = 0;
     while (in_tmp.Input()) {
-        queue->Push(in_tmp);
-        i++;
+        size++;
+        if (size > t_size) {
+            t_size *= 2;
+            if (t_size == 0) {
+                t_size = 1;
+            }
+            notes = (TNote *) realloc(notes, t_size * sizeof(TNote));
+        }
+        notes[size - 1] = in_tmp;
     }
-    size_t size = i;
-    TNote *notes = new TNote[size];
-    i = 0;
-    while (!queue->IsEmpty()) {
-        notes[i] = queue->Pop();
-        i++;
+    if (t_size > size) {
+        notes = (TNote *) realloc(notes, size * sizeof(TNote));
     }
     RadixSort(&notes, size);
-    //printf("Point\n");
-    for (i = 0; i < size; i++) {
+    for (size_t i = 0; i < size; i++) {
         notes[i].Print();
     }
-    //printf("Stop Point\n");
-    //delete [] res;
-    delete [] notes;
-    delete queue;
+    free(notes);
     
     return 0;
 }
