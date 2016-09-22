@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "vector.h"
-//#include "queue.h"
 #include "data.h"
 
 TNote *CntSort(TVector *arr, TNote *notes) {
