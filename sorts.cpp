@@ -3,7 +3,11 @@
 #include "data.h"
 
 TNote *CntSort(TVector *arr, TNote *notes) {
-    int cnts[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    const size_t base = 2;
+    int cnts[base];
+    for (size_t i = 0; i < base; i++) {
+        cnts[i] = 0;
+    }
     TNote *res = new TNote[arr->Size()];
 
     for (size_t i = 0; i < arr->Size(); i++) {
@@ -11,7 +15,7 @@ TNote *CntSort(TVector *arr, TNote *notes) {
         cnts[arr->Values[i]]++;
     }
 
-    for (size_t i = 1; i < 10; i++) {
+    for (size_t i = 1; i < base; i++) {
         cnts[i] += cnts[i - 1];
     }
 
@@ -33,16 +37,26 @@ void RadixSort(TNote **in_arr, size_t size) {
         arr[i].NumTmp += (long long) arr[i].Key.Year * 10000;
     }
 
-    for (int i = 0; i < 8; i++) {
+    //long long cnt = 0;
+    for (size_t j = 0; j < 256; j++) {
+        bool all_nulls = true;
+        //cnt++;
         for (size_t i = 0; i < size; i++) {
-            sort_arr->Values[i] = arr[i].NumTmp % 10;
-            arr[i].NumTmp /= 10;
+            if (arr[i].NumTmp != 0) {
+                all_nulls = false;
+            }
+            sort_arr->Values[i] = (int) arr[i].NumTmp & 1;
+            arr[i].NumTmp = arr[i].NumTmp >> 1;
+        }
+        if (all_nulls) {
+            break;
         }
         
         TNote *new_arr = CntSort(sort_arr, arr);
         delete [] arr;
         arr = new_arr;
     }
+    //printf("%lld\n", cnt);
     *in_arr = arr;
     delete sort_arr;
 }
