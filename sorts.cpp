@@ -39,7 +39,7 @@ void RadixSort(TNote **in_arr, size_t size) {
         arr[i].NumTmp += (long long) arr[i].Key.Year * 10000;
     }
 
-    for (size_t j = 0; j < 256; j++) {
+    for (size_t j = 0; j < 32; j++) {
         bool all_nulls = true;
         for (size_t i = 0; i < size; i++) {
             if (arr[i].NumTmp != 0) {
